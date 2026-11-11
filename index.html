@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siray Tech</title>
+<meta name="description" content="Siray Tech: tested gaming PCs, graphics cards, monitors and parts in Centurion, Gauteng. Custom builds, trade-ins and nationwide delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Siray Tech brand: black and white only. Layout: slim header, short hero, filterable stock grid, how-to-buy strip, sold wall, contact. */
+  --bg:#050505;
+  --panel:#101010;
+  --line:#2a2a2a;
+  --ink:#f5f5f5;
+  --muted:#a3a3a3;
+  --glow:rgba(255,255,255,.55);
+  --display:"Rajdhani","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0}
+header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 14px var(--glow)}
+.brand span{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.06em}
+nav{margin-left:auto;display:flex;gap:22px;font-size:14px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:600;font-size:14px;background:var(--ink);color:var(--bg);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{box-shadow:0 0 18px var(--glow)}
+@media (max-width:760px){nav{display:none}.bar .btn{margin-left:auto}}
+
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.slogan{font-family:var(--display);letter-spacing:.32em;font-size:13px;color:var(--muted)}
+.hero h1{font-size:clamp(40px,6vw,68px);margin:14px 0 16px;font-weight:700}
+.hero p{max-width:56ch;color:var(--muted);margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.facts div{background:var(--panel);padding:18px}
+.facts b{display:block;font-family:var(--display);font-size:30px;font-variant-numeric:tabular-nums}
+.facts small{color:var(--muted)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+
+section{padding:56px 0}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.head h2{font-size:clamp(30px,4vw,42px)}
+.head p{color:var(--muted);margin:6px 0 0;max-width:60ch}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:500 14px var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.filters button[aria-pressed="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card .ph{aspect-ratio:1/1;background:#fff;display:grid;place-items:center}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .ph.none{background:var(--panel);border-bottom:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center;padding:20px}
+.card .ph.none strong{display:block;font-family:var(--display);font-size:46px;color:var(--ink);letter-spacing:.04em}
+.body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-size:22px;font-weight:600}
+.price{font-family:var(--display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.price s{font-size:17px;color:var(--muted);margin-left:8px;font-weight:500}
+.card ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.card .note{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.card .actions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+.card .actions .btn{padding:9px 14px;font-size:13px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--panel)}
+.step b{font-family:var(--display);font-size:15px;letter-spacing:.2em;color:var(--muted)}
+.step h3{font-size:22px;margin:8px 0}
+.step p{margin:0;color:var(--muted);font-size:14px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+.sold{display:flex;flex-wrap:wrap;gap:8px}
+.sold span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--muted)}
+.sold span b{color:var(--ink);font-weight:600}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.contact .box{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--panel)}
+.contact dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px}
+.contact dt{color:var(--muted)}
+.contact dd{margin:0}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Siray Tech home"><img src="img/logo.png" alt="Siray Tech logo"><span>SIRAY TECH</span></a>
+    <nav aria-label="Main"><a href="#stock">In stock</a><a href="#builds">Custom builds</a><a href="#buy">How to buy</a><a href="#contact">Contact</a></nav>
+    <a class="btn" href="https://wa.me/27736786392?text=Hi%20Siray%20Tech%2C%20I%27m%20looking%20for%20" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="slogan">BUILD • PERFORM • ELEVATE</div>
+      <h1>Tested gaming PCs and parts, ready today in Centurion.</h1>
+      <p>Siray Tech sells gaming PCs, graphics cards, monitors, storage and peripherals. Every item is cleaned, tested and shown working before you pay. Collect in Centurion by appointment or get it couriered anywhere in South Africa.</p>
+      <div class="cta">
+        <a class="btn" href="#stock">See what's in stock</a>
+        <a class="btn ghost" href="https://wa.me/27736786392?text=Hi%20Siray%20Tech%2C%20I%27d%20like%20a%20custom%20build%20quote.%20Budget%3A%20R%20%20%20Games%2Fuse%3A%20" target="_blank" rel="noopener">Get a custom build quote</a>
+      </div>
+    </div>
+    <div class="facts" aria-label="Siray Tech at a glance">
+      <div><b id="stockCount">13</b><small>items in stock now</small></div>
+      <div><b>45+</b><small>items sold through Siray Tech this year</small></div>
+      <div><b>3-day</b><small>test warranty on pre-owned items</small></div>
+      <div><b>SA-wide</b><small>courier delivery, or collect in Centurion</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="stock">
+  <div class="wrap">
+    <div class="head">
+      <div><h2>In stock</h2><p>Prices in rand. Stock moves fast, so WhatsApp us to confirm before you travel.</p></div>
+      <div class="filters" role="group" aria-label="Filter stock">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="pc" aria-pressed="false">Gaming PCs</button>
+        <button type="button" data-f="monitor" aria-pressed="false">Monitors</button>
+        <button type="button" data-f="storage" aria-pressed="false">Storage</button>
+        <button type="button" data-f="gear" aria-pressed="false">Keyboards, mice and audio</button>
+        <button type="button" data-f="other" aria-pressed="false">Consoles and laptops</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="builds" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head"><div><h2>Custom builds and trade-ins</h2><p>Tell us what you play, the resolution and frame rate you want, and your budget. We spec the build, quote it on a proper Siray Tech quotation and build it to order in 3 to 4 business days. Trading in your old PC, GPU or phone? Send photos and specs and we'll value it against the upgrade.</p></div>
+      <a class="btn" href="https://wa.me/27736786392?text=Hi%20Siray%20Tech%2C%20I%20want%20to%20trade%20in%20my%20" target="_blank" rel="noopener">Value my trade-in</a></div>
+  </div>
+</section>
+
+<section id="buy" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head"><div><h2>How to buy</h2></div></div>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>Message us</h3><p>WhatsApp or Instagram DM with the item, or your budget and what you'll use it for.</p></div>
+      <div class="step"><b>02</b><h3>See it working</h3><p>We send a video or demo it for you in person. Pre-owned items get a 3-day test warranty.</p></div>
+      <div class="step"><b>03</b><h3>Pay by EFT</h3><p>Full payment confirms your order. You get a Siray Tech invoice.</p></div>
+      <div class="step"><b>04</b><h3>Collect or courier</h3><p>Collect at our Laudium, Centurion office by appointment, or we courier it nationwide for R60 to R350.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sold" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head"><div><h2>Recently sold</h2><p>A few of the machines that found new homes this year.</p></div></div>
+    <div class="sold" id="soldList"></div>
+  </div>
+</section>
+
+<section id="contact" style="border-top:1px solid var(--line)">
+  <div class="wrap contact">
+    <div>
+      <h2 style="font-size:clamp(30px,4vw,42px)">Talk to Siray Tech</h2>
+      <p style="color:var(--muted);max-width:52ch">Gaming, Servers and Computing. A division of Compuspare, based in Laudium, Centurion. The office address is shared once your collection is booked.</p>
+      <div class="cta"><a class="btn" href="https://wa.me/27736786392" target="_blank" rel="noopener">WhatsApp 073 678 6392</a><a class="btn ghost" href="https://www.instagram.com/siraytech/" target="_blank" rel="noopener">Instagram @siraytech</a></div>
+    </div>
+    <div class="box">
+      <dl>
+        <dt>WhatsApp</dt><dd>073 678 6392</dd>
+        <dt>Email</dt><dd>siraytech@gmail.com</dd>
+        <dt>Instagram</dt><dd>@siraytech</dd>
+        <dt>Area</dt><dd>Laudium, Centurion · courier nationwide</dd>
+        <dt>Delivery</dt><dd>R60 to R350, depending on the item</dd>
+        <dt>Build time</dt><dd>3 to 4 business days for custom builds</dd>
+        <dt>Payment</dt><dd>EFT, full payment confirms the order</dd>
+        <dt>Warranty</dt><dd>Pre-owned: 3-day test warranty · New: 1 to 2 years, confirmed per item</dd>
+        <dt>Custom builds</dt><dd>No returns or exchanges</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Siray Tech · BUILD • PERFORM • ELEVATE</span><span>Prices and stock as at 11 November 2026</span></div></footer>
+
+<script>
+const WA = t => "https://wa.me/27736786392?text=" + encodeURIComponent("Hi Siray Tech, is the " + t + " available? ");
+const items = [
+ {c:"pc", img:"white.jpg", t:"All-white gaming PC: i7-12700F + EVGA RTX 3080 FTW3 Ultra", p:27500,
+  s:["Intel Core i7-12700F, 12 cores / 20 threads","EVGA RTX 3080 FTW3 Ultra","MSI MPG Z690 Edge WiFi DDR5","32GB Corsair Vengeance DDR5","NZXT Kraken X63 280mm AIO","Corsair RM850 850W Gold, Corsair 4000D Airflow white"],
+  n:"Max-settings 1440p and 4K-capable. Original boxes for all parts except the 250GB NVMe."},
+ {c:"pc", img:"ryzen.jpg", t:"Gaming PC: Ryzen 5 5600G + GTX 1070 Ti 8GB", p:10500,
+  s:["AMD Ryzen 5 5600G, 6 cores / 12 threads","NVIDIA GTX 1070 Ti 8GB","16GB GeIL RGB DDR4 3600MHz","500GB SSD, 550W PSU","PC Builder mesh case, 3 RGB fans"],
+  n:"Smooth 1080p in Valorant, Fortnite, CS2 and GTA V. R7,500 without the graphics card."},
+ {c:"pc", img:"i7.jpg", t:"Gaming PC: Intel i7-9700K + GTX 1660 Ti", p:7999, was:8500,
+  s:["Intel Core i7-9700K, 8 cores up to 4.9GHz","NVIDIA GTX 1660 Ti 6GB","16GB DDR4 3200MHz","Fractal Celsius S36 360mm AIO","256GB SSD, Windows 11 installed"],
+  n:"Antec NX291 RGB case, Corsair VS450 PSU."},
+ {c:"monitor", img:"acer.jpg", t:"Acer Nitro VG270U 27\" QHD 200Hz IPS", p:2999,
+  s:["27\" IPS, 2560 × 1440","200Hz with AMD FreeSync","2× HDMI, 1× DisplayPort","ZeroFrame design, VESA 100"], n:"Made Dec 2025, practically new. Stand and power adapter included."},
+ {c:"monitor", img:"lg.jpg", t:"LG UltraGear 27GN650 27\" 144Hz IPS", p:1999,
+  s:["27\" IPS, 1920 × 1080","144Hz, 1ms GtG","G-Sync Compatible + FreeSync Premium","HDR10, 99% sRGB, height and pivot stand"], n:"Power adapter and DisplayPort cable included."},
+ {c:"storage", img:"corsair.jpg", t:"Corsair MP600 Core XT 2TB Gen4 NVMe", p:3999,
+  s:["PCIe Gen4 x4, M.2 2280","Up to 5,000MB/s read","Drive health 97%","PS5 compatible (add a heatsink)"], n:""},
+ {c:"storage", img:"hiksemi.jpg", t:"Hiksemi Wave 2TB SATA SSD", p:2700,
+  s:["2TB, 2.5\" SATA","Drive health 99%","Fits any desktop or laptop SATA bay"], n:"Non-negotiable."},
+ {c:"gear", img:"rog.jpg", t:"ASUS ROG Strix Scope RX keyboard (Red switches)", p:700,
+  s:["ROG RX Red optical switches","Per-key Aura Sync RGB","IP57 water and dust resistant","USB passthrough"], n:"C key legend slightly faded, works perfectly."},
+ {c:"gear", img:"gmmk.jpg", t:"Glorious GMMK Compact 60% keyboard, white", p:900,
+  s:["60% layout, hot-swappable","Brown tactile switches","RGB, braided USB-C cable","Original box included"], n:"Light marks on some keycaps, cleanable."},
+ {c:"gear", img:"arctis.jpg", t:"SteelSeries Arctis 7 Wireless headset, white", p:799,
+  s:["Lossless 2.4GHz wireless, up to 24h battery","ClearCast retractable mic","PC, PS5, PS4 and Switch","Box, transmitter and cables included"], n:"Some marks on the earcups, works perfectly."},
+ {c:"gear", img:"g502.jpg", t:"Logitech G502 HERO gaming mouse", p:250, was:600,
+  s:["HERO 25K sensor","11 programmable buttons","LIGHTSYNC RGB"], n:"Cable wear where it meets the mouse, priced for it."},
+ {c:"other", img:null, label:"PS4", t:"PlayStation 4 500GB + 2 controllers", p:2999, s:["500GB console","Two controllers included"], n:"Photos on request."},
+ {c:"other", img:null, label:"P50", t:"Lenovo ThinkPad P50 i7 laptop, 4GB graphics", p:6500, s:["Intel Core i7","Dedicated 4GB graphics card"], n:"Photos and full specs on request."}
+];
+const R = n => "R" + n.toLocaleString("en-ZA").replace(/ /g," ");
+const tags = {pc:"Gaming PC",monitor:"Monitor",storage:"Storage",gear:"Peripherals",other:"Console / laptop"};
+const grid = document.getElementById("grid");
+grid.innerHTML = items.map(i => `
+ <article class="card" data-c="${i.c}">
+  ${i.img ? `<div class="ph"><img src="img/${i.img}" alt="${i.t}"></div>` : `<div class="ph none"><div><strong>${i.label}</strong>Photos on request</div></div>`}
+  <div class="body">
+   <div class="tag">${tags[i.c]}</div>
+   <h3>${i.t}</h3>
+   <div class="price">${R(i.p)}${i.was ? `<s>${R(i.was)}</s>` : ""}</div>
+   <ul>${i.s.map(x => `<li>${x}</li>`).join("")}</ul>
+   ${i.n ? `<div class="note">${i.n}</div>` : ""}
+   <div class="actions"><a class="btn" href="${WA(i.t)}" target="_blank" rel="noopener">Ask on WhatsApp</a><a class="btn ghost" href="https://www.instagram.com/siraytech/" target="_blank" rel="noopener">DM</a></div>
+  </div>
+ </article>`).join("");
+document.getElementById("stockCount").textContent = items.length;
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  const f = b.dataset.f;
+  grid.querySelectorAll(".card").forEach(c => c.hidden = !(f === "all" || c.dataset.c === f));
+}));
+const sold = [["RTX 5080 gaming PC","R52,000"],["RTX 5070 Ti gaming PC","R46,999"],["Ryzen 9 9900X Corsair build","R29,000"],["i9-14900KF + RTX 3080 Ti PC","R29,999"],["Ryzen 7 9700X DDR5 PC","R26,000"],["RTX 4070 Super PC","R19,000"],["RTX 3070 PC","R16,900"],["iPhone 15 Pro Max 256GB","R13,999"],["RTX 3080 Ti MSI Trio","R9,500"],["Asus ROG Xbox Ally (Z2)","R9,300"],["Alienware AW2723DF 280Hz","R7,500"],["RTX 3070 Ti Asus TUF","R6,800"],["XFX RX 6700 XT","R4,999"]];
+document.getElementById("soldList").innerHTML = sold.map(([t,p]) => `<span><b>${t}</b> · ${p}</span>`).join("");
+</script>
+</body>
+</html>
