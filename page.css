@@ -1,7 +1,8 @@
 :root{--bg:#050505;--panel:#101010;--line:#2a2a2a;--ink:#f5f5f5;--muted:#a3a3a3;--glow:rgba(255,255,255,.55);--display:"Rajdhani","Arial Narrow",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
+.item .ph img{width:100%;height:auto;object-fit:contain}
 a{color:var(--ink)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
