@@ -60,10 +60,10 @@
       : `<a class="btn" href="${wa(`Hi Siray Tech, is the ${i.t} (${R(i.p)}) available?`)}" target="_blank" rel="noopener">Ask on WhatsApp</a><a class="btn ghost" href="https://www.instagram.com/siraytech/" target="_blank" rel="noopener">DM</a>`;
     return `<article class="card${sold ? " is-sold" : ""}">
       ${sold ? `<span class="ribbon">${label}</span>` : `<span class="ribbon">IN STOCK</span>`}
-      <div class="ph"><img src="img/${i.img}" alt="${i.t.replace(/"/g, "&quot;")}" loading="lazy" decoding="async" width="800" height="800"></div>
+      <a class="ph" href="${i.u}"><img src="img/${i.img}" alt="${i.t.replace(/"/g, "&quot;")}" loading="lazy" decoding="async" width="800" height="800"></a>
       <div class="body">
         <div class="tag">${subName[i.sub]}</div>
-        <h3>${i.t}</h3>
+        <h3><a href="${i.u}" style="text-decoration:none">${i.t}</a></h3>
         <div class="price">${price}</div>
         ${specs}${note}
         <div class="meta">${sold ? `Listed ${when} · ${label === "SOLD" ? "sold" : "sold out"}` : `Listed ${when}`}</div>

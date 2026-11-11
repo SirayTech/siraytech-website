@@ -144,6 +144,15 @@ section{padding:56px 0}
 .trust small{color:var(--muted)}
 @media (max-width:700px){.trust{grid-template-columns:repeat(2,1fr)}}
 .trust[hidden]{display:none}
+
+.sellf{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:22px}
+@media (max-width:700px){.sellf{grid-template-columns:1fr}}
+.sellf label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.sellf input,.sellf select,.sellf textarea{font:15px var(--body);color:var(--ink);background:#0b0b0b;border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+.sellf .full{grid-column:1/-1}
+.sellf small{color:var(--muted)}
+a.ph{display:grid}
+footer a{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 </style>
@@ -165,7 +174,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top" aria-label="Siray Tech home"><img src="img/logo.png" alt="Siray Tech logo"><span>SIRAY TECH</span></a>
-    <nav aria-label="Main"><div class="mega" id="mega"><button type="button" aria-expanded="false" aria-controls="megaPanel">Shop by category ▾</button><div class="panel" id="megaPanel"></div></div><a href="#shop" data-go="stock">In stock</a><a href="#shop" data-go="sold">Sold archive</a><a href="#builds">Custom builds</a><a href="#buy">How to buy</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Main"><div class="mega" id="mega"><button type="button" aria-expanded="false" aria-controls="megaPanel">Shop by category ▾</button><div class="panel" id="megaPanel"></div></div><a href="#shop" data-go="stock">In stock</a><a href="#shop" data-go="sold">Sold archive</a><a href="#sell">Sell to us</a><a href="#builds">Custom builds</a><a href="#buy">How to buy</a><a href="#contact">Contact</a></nav>
     <a class="btn" href="https://wa.me/27736786392?text=Hi%20Siray%20Tech%2C%20I%27m%20looking%20for%20" target="_blank" rel="noopener">WhatsApp us</a>
   </div>
 </header>
@@ -226,6 +235,23 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </div>
 </section>
 
+<section id="sell" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head"><div><h2>Sell or trade in to Siray Tech</h2><p>Got a gaming PC, graphics card, console, laptop or phone you don't use? Tell us about it and we'll come back with an offer, or value it against an upgrade. Fill this in and it opens WhatsApp with the details ready to send. Then add a few photos in the chat.</p></div></div>
+    <form class="sellf" id="sellForm">
+      <label>Your name<input name="name" required autocomplete="name"></label>
+      <label>What is it?<select name="type" required><option value="">Choose…</option><option>Gaming PC</option><option>Graphics card</option><option>CPU / RAM / motherboard</option><option>Monitor</option><option>Laptop</option><option>Console / handheld</option><option>iPhone / Android phone</option><option>SSD / storage</option><option>Other</option></select></label>
+      <label class="full">Brand and model / full specs<input name="model" required placeholder="e.g. MSI RTX 3070 Ti Gaming X Trio, or i7-12700F + RTX 3080 + 32GB DDR5"></label>
+      <label>Condition<select name="cond" required><option value="">Choose…</option><option>Like new</option><option>Good, light marks</option><option>Used, visible wear</option><option>Faulty / for parts</option></select></label>
+      <label>What's included?<input name="incl" placeholder="Box, charger, cables, receipt…"></label>
+      <label>Price you have in mind (R)<input name="price" inputmode="numeric" placeholder="Optional"></label>
+      <label>Your area<input name="area" placeholder="e.g. Centurion"></label>
+      <label class="full">Sell for cash or trade in?<select name="mode"><option>Sell for cash</option><option>Trade in against an upgrade</option></select></label>
+      <div class="full"><button class="btn" type="submit">Send on WhatsApp</button> <small>&nbsp;We ask for ID when we buy from you, as the law requires of second-hand dealers.</small></div>
+    </form>
+  </div>
+</section>
+
 <section id="builds" style="border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="head"><div><h2>Custom builds and trade-ins</h2><p>Tell us what you play, the resolution and frame rate you want, and your budget. We spec the build, quote it on a proper Siray Tech quotation and build it to order in 3 to 4 business days. Trading in your old PC, GPU or phone? Send photos and specs and we'll value it against the upgrade.</p></div>
@@ -269,9 +295,31 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Siray Tech · BUILD • PERFORM • ELEVATE</span><span>Prices and stock as at 11 November 2026</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Siray Tech · BUILD • PERFORM • ELEVATE · A trading name of Siraj Ayob</span><span><a href="terms.html">Terms</a> · <a href="returns.html">Returns &amp; warranty</a> · <a href="delivery.html">Delivery</a> · <a href="privacy.html">Privacy</a></span></div></footer>
 
-<script src="catalog.js?v=1"></script>
-<script src="shop.js?v=1"></script>
+<script src="catalog.js?v=2"></script>
+<script src="shop.js?v=2"></script>
+<script>
+document.getElementById("sellForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);
+const m=`Hi Siray Tech, I'd like to ${f.get("mode")==="Sell for cash"?"sell":"trade in"} an item.\n\nName: ${f.get("name")}\nItem: ${f.get("type")}\nModel/specs: ${f.get("model")}\nCondition: ${f.get("cond")}\nIncluded: ${f.get("incl")||"-"}\nPrice in mind: ${f.get("price")?"R"+f.get("price"):"-"}\nArea: ${f.get("area")||"-"}\n\nI'll send photos in this chat.`;
+window.open("https://wa.me/27736786392?text="+encodeURIComponent(m),"_blank","noopener");});
+</script>
+<link rel="stylesheet" href="https://storage.googleapis.com/mychatbot-widget-assets/v1/style.css" />
+<script src="https://storage.googleapis.com/mychatbot-widget-assets/v1/widget.js"></script>
+<div id="my-chat-widget-container"></div>
+<script>
+  MyChatBot.mount('#my-chat-widget-container', {
+    account_id: "72827beb-0630-4336-8494-fdfacacc0afe",
+    widget_id: "siraytech-site",
+    api_url: 'https://api.mychatbot.app',
+    assistant_name: "Siray Tech Assistant",
+    color: "#111111",
+    lang: 'en',
+    ad_widget_title: '',
+    ad_widget_description: '',
+    ad_popup_messages: []
+  });
+</script>
+
 </body>
 </html>
