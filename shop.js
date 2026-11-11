@@ -59,7 +59,7 @@
       ? `<a class="btn ghost" href="${wa(`Hi Siray Tech, I saw the sold ${i.t} on your website. Can you source one like it for me?`)}" target="_blank" rel="noopener">Want one like this?</a>`
       : `<a class="btn" href="${wa(`Hi Siray Tech, is the ${i.t} (${R(i.p)}) available?`)}" target="_blank" rel="noopener">Ask on WhatsApp</a><a class="btn ghost" href="https://www.instagram.com/siraytech/" target="_blank" rel="noopener">DM</a>`;
     return `<article class="card${sold ? " is-sold" : ""}">
-      ${sold ? `<span class="ribbon">${label}</span>` : `<span class="ribbon">IN STOCK</span>`}
+      ${sold ? `<span class="ribbon off"><i></i>${label}</span>` : `<span class="ribbon on"><i></i>IN STOCK</span>`}
       <a class="ph" href="${i.u}"><img src="img/${i.img}" alt="${i.t.replace(/"/g, "&quot;")}" loading="lazy" decoding="async" width="800" height="800"></a>
       <div class="body">
         <div class="tag">${subName[i.sub]}</div>
