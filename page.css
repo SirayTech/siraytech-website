@@ -62,3 +62,4 @@ footer a{color:var(--muted)}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
 @media (prefers-reduced-motion:reduce){.on i,.dot.on{animation:none}}
 .rgrid small .dot{width:7px;height:7px;margin-right:6px;vertical-align:1px}
+.pcol{min-width:0;display:flex;flex-direction:column;gap:10px}
