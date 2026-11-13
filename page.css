@@ -11,7 +11,7 @@ header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.92);backdrop-filt
 .bar{display:flex;align-items:center;gap:16px;height:64px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 14px var(--glow)}
-.brand span{font-family:"Parisienne","Segoe Script",cursive;font-weight:400;font-size:29px;line-height:1;letter-spacing:.01em;text-shadow:0 0 10px rgba(255,255,255,.35)}
+.brand span{font-family:"Parisienne","Segoe Script",cursive;font-weight:400;font-size:29px;line-height:1;white-space:nowrap;letter-spacing:.01em;text-shadow:0 0 10px rgba(255,255,255,.35)}
 .bar nav{margin-left:auto;display:flex;gap:20px;font-size:14px}
 .bar nav a{color:var(--muted);text-decoration:none}
 .bar nav a:hover{color:var(--ink)}
