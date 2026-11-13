@@ -165,6 +165,20 @@ footer a{color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.on i,.dot.on{animation:none}}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+/* Photo galleries + pre-owned label */
+.card .gal-wrap{position:relative;display:block}
+.gal{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.gal::-webkit-scrollbar{display:none}
+.gal a{flex:0 0 100%;height:100%;scroll-snap-align:center;display:block;background:#fff}
+.gal img,.card .ph img{width:100%;height:100%;object-fit:contain;background:#fff}
+.gnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,0,0,.12);background:rgba(255,255,255,.92);color:#000;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.gnav.prev{left:8px}.gnav.next{right:8px}.gnav:disabled{opacity:.25;cursor:default}
+.gdots{position:absolute;bottom:10px;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.gdots i{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.22)}
+.gdots i.on{background:#000}
+.gcount{position:absolute;bottom:8px;right:10px;z-index:3;background:rgba(0,0,0,.72);color:#fff;border-radius:999px;padding:3px 8px;font:500 11px var(--body);font-variant-numeric:tabular-nums}
+.cond{position:absolute;top:14px;right:14px;z-index:3;background:rgba(8,8,8,.78);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:7px 12px;font:600 11px var(--body);letter-spacing:.16em}
 </style>
 <link rel="canonical" href="https://siraytech.co.za/">
 <meta name="robots" content="index, follow">
@@ -175,7 +189,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <meta property="og:url" content="https://siraytech.co.za/">
 <meta property="og:image" content="https://siraytech.co.za/img/white.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="img/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png">
+<link rel="apple-touch-icon" href="/img/favicon-180.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ComputerStore","name":"Siray Tech","alternateName":"SirayTech","url":"https://siraytech.co.za/","logo":"https://siraytech.co.za/img/logo.png","image":"https://siraytech.co.za/img/white.jpg","description":"Tested gaming PCs, graphics cards, monitors, storage and peripherals. Custom PC builds, trade-ins and nationwide courier delivery from Centurion, Gauteng.","telephone":"+27736786392","priceRange":"R250 - R27500","currenciesAccepted":"ZAR","address":{"@type":"PostalAddress","addressLocality":"Laudium, Centurion","addressRegion":"Gauteng","addressCountry":"ZA"},"areaServed":[{"@type":"City","name":"Centurion"},{"@type":"City","name":"Pretoria"},{"@type":"State","name":"Gauteng"},{"@type":"Country","name":"South Africa"}],"sameAs":["https://www.instagram.com/siraytech/","https://www.facebook.com/profile.php?id=61596441721530"],"parentOrganization":{"@type":"Organization","name":"Compuspare"}}
 </script>
@@ -213,7 +230,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <section id="shop">
   <div class="wrap">
     <div class="head">
-      <div><h2>Shop Siray Tech</h2><p>Everything we've listed since 2021. What's in stock is ready to go; sold items stay here so you can see the kind of gear we deal in and how much has gone out to happy buyers. Want something you see in the sold archive? We can usually source another one.</p></div>
+      <div><h2>Shop Siray Tech</h2><p>Everything we've listed since 2021. All our stock is pre-owned (pre-loved): cleaned, tested and shown working before you pay. Swipe or tap the arrows on a product to see all its photos. What's in stock is ready to go; sold items stay here so you can see the kind of gear we deal in and how much has gone out to happy buyers. Want something you see in the sold archive? We can usually source another one.</p></div>
     </div>
     <div class="shop">
       <aside class="side" aria-label="Categories">

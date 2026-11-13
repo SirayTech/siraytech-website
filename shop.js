@@ -48,6 +48,25 @@
     });
   }
 
+  function photos(i, sold) {
+    const alt = i.t.replace(/"/g, "&quot;");
+    const src = (!sold && i.g && i.g.length) ? i.g : [i.img];
+    if (src.length < 2) return `<a class="ph" href="${i.u}"><img src="img/${src[0]}" alt="${alt}" loading="lazy" decoding="async" width="800" height="800"></a>`;
+    return `<div class="ph gal-wrap"><div class="gal">${src.map((s, k) => `<a href="${i.u}"><img src="img/${s}" alt="${alt}, photo ${k + 1} of ${src.length}" loading="lazy" decoding="async" width="800" height="800"></a>`).join("")}</div>
+      <button class="gnav prev" type="button" aria-label="Previous photo" disabled>&#8249;</button><button class="gnav next" type="button" aria-label="Next photo">&#8250;</button>
+      <div class="gdots">${src.map((_, k) => `<i class="${k ? "" : "on"}"></i>`).join("")}</div><span class="gcount">1 / ${src.length}</span></div>`;
+  }
+  function wireGalleries(root) {
+    root.querySelectorAll(".gal-wrap").forEach(w => {
+      const g = w.querySelector(".gal"), dots = [...w.querySelectorAll(".gdots i")], prev = w.querySelector(".prev"), next = w.querySelector(".next"), cnt = w.querySelector(".gcount");
+      const idx = () => Math.round(g.scrollLeft / g.clientWidth);
+      const to = k => g.scrollTo({ left: Math.max(0, Math.min(dots.length - 1, k)) * g.clientWidth, behavior: "smooth" });
+      prev.addEventListener("click", e => { e.preventDefault(); to(idx() - 1); });
+      next.addEventListener("click", e => { e.preventDefault(); to(idx() + 1); });
+      g.addEventListener("scroll", () => { const k = idx(); dots.forEach((d, j) => d.classList.toggle("on", j === k)); cnt.textContent = `${k + 1} / ${dots.length}`; prev.disabled = k === 0; next.disabled = k === dots.length - 1; }, { passive: true });
+    });
+  }
+
   function card(i) {
     const sold = isSold(i);
     const label = i.st === "soldout" ? "SOLD OUT" : "SOLD";
@@ -60,7 +79,8 @@
       : `<a class="btn" href="${wa(`Hi Siray Tech, is the ${i.t} (${R(i.p)}) available?`)}" target="_blank" rel="noopener">Ask on WhatsApp</a><a class="btn ghost" href="https://www.instagram.com/siraytech/" target="_blank" rel="noopener">DM</a>`;
     return `<article class="card${sold ? " is-sold" : ""}">
       ${sold ? `<span class="ribbon off"><i></i>${label}</span>` : `<span class="ribbon on"><i></i>IN STOCK</span>`}
-      <a class="ph" href="${i.u}"><img src="img/${i.img}" alt="${i.t.replace(/"/g, "&quot;")}" loading="lazy" decoding="async" width="800" height="800"></a>
+      ${sold ? "" : `<span class="cond">PRE-OWNED</span>`}
+      ${photos(i, sold)}
       <div class="body">
         <div class="tag">${subName[i.sub]}</div>
         <h3><a href="${i.u}" style="text-decoration:none">${i.t}</a></h3>
@@ -89,6 +109,7 @@
       grid.innerHTML = `<div class="empty" style="grid-column:1/-1">Nothing ${what} in ${name} right now. We source on request: <a href="${wa(`Hi Siray Tech, I'm looking for ${state.sub ? subName[state.sub] : state.q || "something"}. Budget: R`)}" target="_blank" rel="noopener">tell us what you need on WhatsApp</a>.${state.status === "stock" ? ` Or <a href="#shop" data-go="sold">see what we've sold</a>.` : ""}</div>`;
     } else {
       grid.innerHTML = list.slice(0, state.shown).map(card).join("");
+      wireGalleries(grid);
     }
     const more = document.getElementById("moreBtn");
     more.hidden = list.length <= state.shown;
