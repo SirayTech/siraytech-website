@@ -324,8 +324,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <footer><div class="wrap"><span>© 2026 Siray Tech · BUILD • PERFORM • ELEVATE · A trading name of Siraj Ayob</span><span><a href="terms.html">Terms</a> · <a href="returns.html">Returns &amp; warranty</a> · <a href="delivery.html">Delivery</a> · <a href="privacy.html">Privacy</a></span></div></footer>
 
-<script src="catalog.js?v=2"></script>
-<script src="shop.js?v=3"></script>
+<script src="catalog.js?v=20261113"></script>
+<script src="shop.js?v=20261113"></script>
 <script>
 document.getElementById("sellForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);
 const m=`Hi Siray Tech, I'd like to ${f.get("mode")==="Sell for cash"?"sell":"trade in"} an item.\n\nName: ${f.get("name")}\nItem: ${f.get("type")}\nModel/specs: ${f.get("model")}\nCondition: ${f.get("cond")}\nIncluded: ${f.get("incl")||"-"}\nPrice in mind: ${f.get("price")?"R"+f.get("price"):"-"}\nArea: ${f.get("area")||"-"}\n\nI'll send photos in this chat.`;
