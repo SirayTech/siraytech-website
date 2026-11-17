@@ -333,7 +333,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <script src="catalog.js?v=20261118a"></script>
 <script src="shop.js?v=20261118a"></script>
-<script src="bf.js?v=20261118a"></script>
+<script src="bf.js?v=20261118b"></script>
 <script>
 document.getElementById("sellForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);
 const m=`Hi Siray Tech, I'd like to ${f.get("mode")==="Sell for cash"?"sell":"trade in"} an item.\n\nName: ${f.get("name")}\nItem: ${f.get("type")}\nModel/specs: ${f.get("model")}\nCondition: ${f.get("cond")}\nIncluded: ${f.get("incl")||"-"}\nPrice in mind: ${f.get("price")?"R"+f.get("price"):"-"}\nArea: ${f.get("area")||"-"}\n\nI'll send photos in this chat.`;
