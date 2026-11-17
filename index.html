@@ -217,6 +217,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   <div class="wrap hero-grid">
     <div>
       <div class="slogan">BUILD • PERFORM • ELEVATE</div>
+      <div style="display:inline-block;margin:10px 0 4px;padding:6px 14px;border:1px solid currentColor;border-radius:8px;font-weight:700;letter-spacing:.14em;font-size:.85rem">BLACK FRIDAY DEALS: PRICES DROPPED ON EVERYTHING IN STOCK</div>
       <h1>Tested gaming PCs and parts, ready today in Centurion.</h1>
       <p>Siray Tech sells gaming PCs, graphics cards, monitors, storage and peripherals. Every item is cleaned, tested and shown working before you pay. Collect in Centurion by appointment or get it couriered anywhere in South Africa.</p>
       <div class="cta">
@@ -330,8 +331,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <footer><div class="wrap"><span>© 2026 Siray Tech · BUILD • PERFORM • ELEVATE · A trading name of Siraj Ayob</span><span><a href="terms.html">Terms</a> · <a href="returns.html">Returns &amp; warranty</a> · <a href="delivery.html">Delivery</a> · <a href="privacy.html">Privacy</a></span></div></footer>
 
-<script src="catalog.js?v=20261117a"></script>
-<script src="shop.js?v=20261113"></script>
+<script src="catalog.js?v=20261118a"></script>
+<script src="shop.js?v=20261118a"></script>
 <script>
 document.getElementById("sellForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);
 const m=`Hi Siray Tech, I'd like to ${f.get("mode")==="Sell for cash"?"sell":"trade in"} an item.\n\nName: ${f.get("name")}\nItem: ${f.get("type")}\nModel/specs: ${f.get("model")}\nCondition: ${f.get("cond")}\nIncluded: ${f.get("incl")||"-"}\nPrice in mind: ${f.get("price")?"R"+f.get("price"):"-"}\nArea: ${f.get("area")||"-"}\n\nI'll send photos in this chat.`;

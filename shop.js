@@ -70,7 +70,7 @@
   function card(i) {
     const sold = isSold(i);
     const label = i.st === "soldout" ? "SOLD OUT" : "SOLD";
-    const price = `${R(i.p)}${i.was && !sold ? `<s>${R(i.was)}</s>` : ""}`;
+    const price = `${R(i.p)}${i.was && !sold ? `<s>${R(i.was)}</s>` : ""}${i.bf && !sold ? ` <span style="font-size:.55em;letter-spacing:.1em;border:1px solid currentColor;padding:1px 6px;border-radius:5px;vertical-align:middle;white-space:nowrap">BLACK FRIDAY</span>` : ""}`;
     const specs = i.s && !sold ? `<ul>${i.s.map(x => `<li>${x}</li>`).join("")}</ul>` : "";
     const note = i.n && !sold ? `<div class="note">${i.n}</div>` : "";
     const when = new Date(i.d * 1000).toLocaleDateString("en-ZA", { month: "short", year: "numeric" });
