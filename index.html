@@ -228,7 +228,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="facts" aria-label="Siray Tech at a glance">
       <div><b id="stockCount">13</b><small>items in stock now</small></div>
       <div><b id="soldCount">100+</b><small>items sold through Siray Tech</small></div>
-      <div><b>3-day</b><small>test warranty on pre-owned items</small></div>
+      <div><b>6-month</b><small>warranty, plus 3-day returns</small></div>
       <div><b>SA-wide</b><small>courier delivery, or collect in Centurion</small></div>
     </div>
   </div>
@@ -298,7 +298,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="head"><div><h2>How to buy</h2></div></div>
     <div class="steps">
       <div class="step"><b>01</b><h3>Message us</h3><p>WhatsApp or Instagram DM with the item, or your budget and what you'll use it for.</p></div>
-      <div class="step"><b>02</b><h3>See it working</h3><p>We send a video or demo it for you in person. Pre-owned items get a 3-day test warranty.</p></div>
+      <div class="step"><b>02</b><h3>See it working</h3><p>We send a video or demo it for you in person. Every item comes with a 6-month warranty and 3-day returns.</p></div>
       <div class="step"><b>03</b><h3>Pay by EFT</h3><p>Full payment confirms your order. You get a Siray Tech invoice.</p></div>
       <div class="step"><b>04</b><h3>Collect or courier</h3><p>Collect at our Laudium, Centurion office by appointment, or we courier it nationwide for R60 to R350.</p></div>
     </div>
@@ -321,7 +321,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <dt>Delivery</dt><dd>R60 to R350, depending on the item</dd>
         <dt>Build time</dt><dd>3 to 4 business days for custom builds</dd>
         <dt>Payment</dt><dd>EFT, full payment confirms the order</dd>
-        <dt>Warranty</dt><dd>Pre-owned: 3-day test warranty · New: 1 to 2 years, confirmed per item</dd>
+        <dt>Warranty</dt><dd>6 months on every item</dd>
+        <dt>Returns</dt><dd>Within 3 days, in the same condition with box and accessories</dd>
         <dt>Custom builds</dt><dd>No returns or exchanges</dd>
       </dl>
     </div>
@@ -331,9 +332,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
 <footer><div class="wrap"><span>© 2026 Siray Tech · BUILD • PERFORM • ELEVATE · A trading name of Siraj Ayob</span><span><a href="terms.html">Terms</a> · <a href="returns.html">Returns &amp; warranty</a> · <a href="delivery.html">Delivery</a> · <a href="privacy.html">Privacy</a></span></div></footer>
 
-<script src="catalog.js?v=20261118a"></script>
+<script src="catalog.js?v=20261118c"></script>
 <script src="shop.js?v=20261118a"></script>
-<script src="bf.js?v=20261118b"></script>
+<script src="bf.js?v=20261118c"></script>
 <script>
 document.getElementById("sellForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);
 const m=`Hi Siray Tech, I'd like to ${f.get("mode")==="Sell for cash"?"sell":"trade in"} an item.\n\nName: ${f.get("name")}\nItem: ${f.get("type")}\nModel/specs: ${f.get("model")}\nCondition: ${f.get("cond")}\nIncluded: ${f.get("incl")||"-"}\nPrice in mind: ${f.get("price")?"R"+f.get("price"):"-"}\nArea: ${f.get("area")||"-"}\n\nI'll send photos in this chat.`;

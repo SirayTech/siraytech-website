@@ -70,7 +70,7 @@
 <script>
 (function(){const w=document.querySelector(".item .ph");const g=w&&w.querySelector(".gal");if(!g)return;const n=g.children.length,p=w.querySelector(".prev"),x=w.querySelector(".next"),c=w.querySelector(".gcount"),t=[...document.querySelectorAll(".thumbs button")];
 const i=()=>Math.round(g.scrollLeft/g.clientWidth),to=k=>g.scrollTo({left:Math.max(0,Math.min(n-1,k))*g.clientWidth,behavior:"smooth"});
-p.onclick=()=>to(i()-1);x.onclick=()=>to(i()+1);t.forEach((b,k)=>b.onclick=()=>to(k));
+if(!p||!x)return;p.onclick=()=>to(i()-1);x.onclick=()=>to(i()+1);t.forEach((b,k)=>b.onclick=()=>to(k));
 g.addEventListener("scroll",()=>{const k=i();c.textContent=(k+1)+" / "+n;p.disabled=k===0;x.disabled=k===n-1;t.forEach((b,j)=>b.setAttribute("aria-current",j===k))},{passive:true});})();
 </script>
 </body></html>

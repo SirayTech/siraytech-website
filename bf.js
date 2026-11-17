@@ -151,7 +151,7 @@ body.bf-lock{overflow:hidden}
     last = document.activeElement;
     box.style.display = "flex";
     document.body.classList.add("bf-lock");
-    requestAnimationFrame(() => box.classList.add("show"));
+    void box.offsetWidth; box.classList.add("show");
     setTimeout(() => box.querySelector("#bfShop").focus({ preventScroll: true }), 50);
   }
   function close() {
