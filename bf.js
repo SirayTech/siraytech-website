@@ -3,7 +3,6 @@
    then a slim sticky bar. Switches itself off after 30 Nov 2026 23:59 (SAST).
    To remove early: delete this file and its <script src="bf.js"> line in index.html. */
 (function () {
-  const BF_DAY = new Date("2026-11-27T00:00:00+02:00");
   const END = new Date("2026-11-30T23:59:59+02:00");
   if (Date.now() > END.getTime()) return;
   if (!window.CATALOG) return;
@@ -39,6 +38,9 @@
 @keyframes bfFlick{0%,92%,100%{opacity:1}93%{opacity:.55}94%{opacity:1}96%{opacity:.7}97%{opacity:1}}
 #bf .bf-sub{max-width:52ch;margin:14px auto 0;color:#cfcfcf;font-size:clamp(14px,1.9vw,17px)}
 #bf .bf-sub b{color:#fff}
+#bf .bf-live{display:inline-flex;align-items:center;gap:9px;margin:10px 0 8px;padding:7px 14px;border:1px solid #fff;border-radius:999px;font:700 13px var(--display,sans-serif);letter-spacing:.24em;box-shadow:0 0 16px rgba(255,255,255,.3)}
+#bf .bf-live i{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;animation:bfPulse 1.4s infinite}
+@keyframes bfPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
 #bf .bf-cd{display:flex;justify-content:center;gap:10px;margin:10px 0 4px}
 #bf .bf-cd div{min-width:72px;padding:10px 8px 8px;border:1px solid rgba(255,255,255,.35);border-radius:12px;background:#0b0b0b}
 #bf .bf-cd b{display:block;font-family:var(--display,sans-serif);font-size:clamp(28px,5vw,40px);line-height:1;font-variant-numeric:tabular-nums}
@@ -75,7 +77,7 @@ body.bf-lock{overflow:hidden}
   #bf .bf-brand,#bf .bf-cd,#bf .bf-cta{justify-content:flex-start}
   #bf .bf-kicker{padding-left:0}
   #bf .bf-sub{margin-left:0}
-  #bf .bf-title{font-size:clamp(64px,min(10vw,15.5vh),150px)}
+  #bf .bf-title{font-size:clamp(64px,min(10vw,14.6vh),150px)}
   #bf .bf-r{margin-top:0;padding-left:30px;border-left:1px solid rgba(255,255,255,.18)}
 }
 @media (max-width:720px){
@@ -83,7 +85,7 @@ body.bf-lock{overflow:hidden}
   #bf .bf-cd div{min-width:62px}
   #bf .bf-title .o{-webkit-text-stroke:1.5px #fff}
 }
-@media (prefers-reduced-motion:reduce){#bf,#bf .bf-box{transition:none}#bf .bf-title .f{animation:none}}`;
+@media (prefers-reduced-motion:reduce){#bf,#bf .bf-box{transition:none}#bf .bf-title .f{animation:none}#bf .bf-live i{animation:none}}`;
 
   const style = document.createElement("style");
   style.textContent = css;
@@ -105,9 +107,9 @@ body.bf-lock{overflow:hidden}
     <button class="bf-x" type="button" aria-label="Close">×</button>
     <div class="bf-l">
     <div class="bf-brand"><img src="img/logo.png" alt=""><span>Siray Tech</span></div>
-    <div class="bf-kicker">BUILD • PERFORM • ELEVATE</div>
+    <div class="bf-live"><i></i>DEALS LIVE NOW</div>
     <h2 class="bf-title"><span class="o">Black</span><br><span class="f">Friday</span></h2>
-    <p class="bf-sub"><b>Prices dropped on everything in stock.</b> Tested gaming PCs, monitors, storage and gear, cleaned and shown working before you pay. Most items are one-offs: when it's gone, it's gone.</p>
+    <p class="bf-sub"><b>Black Friday deals are LIVE now.</b> Prices dropped on everything in stock: tested gaming PCs, monitors, storage and gear, cleaned and shown working before you pay. Most items are one-offs: when it's gone, it's gone.</p>
     <div class="bf-cdl" id="bfLabel"></div>
     <div class="bf-cd" id="bfCd"><div><b>0</b><small>Days</small></div><div><b>0</b><small>Hrs</small></div><div><b>0</b><small>Min</small></div><div><b>0</b><small>Sec</small></div></div>
     <div class="bf-cta">
@@ -131,18 +133,15 @@ body.bf-lock{overflow:hidden}
   function tick() {
     const now = Date.now();
     if (now > END.getTime()) { box.remove(); bar.remove(); document.body.classList.remove("bf-lock"); clearInterval(timer); return; }
-    const before = now < BF_DAY.getTime();
-    const target = before ? BF_DAY.getTime() : END.getTime();
+    const target = END.getTime();
     let s = Math.max(0, Math.floor((target - now) / 1000));
     const d = Math.floor(s / 86400); s -= d * 86400;
     const h = Math.floor(s / 3600); s -= h * 3600;
     const m = Math.floor(s / 60); s -= m * 60;
     const v = [d, pad(h), pad(m), pad(s)];
     document.querySelectorAll("#bfCd b").forEach((b, k) => { b.textContent = v[k]; });
-    document.getElementById("bfLabel").textContent = before ? "Early deals live now · Black Friday starts in" : "Sale ends in";
-    document.getElementById("bfBarTx").textContent = before
-      ? `Early deals live now · ${d}d ${pad(h)}h ${pad(m)}m to Black Friday`
-      : `Sale ends in ${d}d ${pad(h)}h ${pad(m)}m`;
+    document.getElementById("bfLabel").textContent = "Limited time · deals end in";
+    document.getElementById("bfBarTx").textContent = `Deals are LIVE now · ends in ${d}d ${pad(h)}h ${pad(m)}m`;
   }
   tick();
   const timer = setInterval(tick, 1000);
