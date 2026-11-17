@@ -107,7 +107,7 @@ body.bf-lock{overflow:hidden}
     <div class="bf-brand"><img src="img/logo.png" alt=""><span>Siray Tech</span></div>
     <div class="bf-kicker">BUILD • PERFORM • ELEVATE</div>
     <h2 class="bf-title"><span class="o">Black</span><br><span class="f">Friday</span></h2>
-    <p class="bf-sub"><b>Black Friday prices are live.</b> Tested gaming PCs, monitors, storage and gear, cleaned and shown working before you pay. Most items are one-offs: when it's gone, it's gone.</p>
+    <p class="bf-sub"><b>Prices dropped on everything in stock.</b> Tested gaming PCs, monitors, storage and gear, cleaned and shown working before you pay. Most items are one-offs: when it's gone, it's gone.</p>
     <div class="bf-cdl" id="bfLabel"></div>
     <div class="bf-cd" id="bfCd"><div><b>0</b><small>Days</small></div><div><b>0</b><small>Hrs</small></div><div><b>0</b><small>Min</small></div><div><b>0</b><small>Sec</small></div></div>
     <div class="bf-cta">
