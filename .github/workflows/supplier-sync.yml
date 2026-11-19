@@ -1,0 +1,57 @@
+name: Supplier sync (every 3 hours)
+
+# Keeps siraytech.co.za's supplier catalogue at the supplier's live prices and stock,
+# then posts new products to Instagram and Facebook. Runs on GitHub's servers, so
+# Siraj's PC never needs to be on. Stays off until the repo variable
+# SUPPLIER_SYNC_ENABLED is set to true (only after Evetech agrees in writing).
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Only check this many products (0 = all)"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: supplier-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: vars.SUPPLIER_SYNC_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 175
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "pillow>=11.3"
+      - name: Sync prices and stock
+        run: python supplier/sync.py --limit "${{ github.event.inputs.limit || '0' }}"
+      - name: Pick new products and draw post images
+        run: python supplier/autopost.py prepare
+      - name: Publish catalogue and images to the website
+        run: |
+          git config user.name "Siray Tech bot"
+          git config user.email "siraytech@gmail.com"
+          git add data/supplier
+          git diff --cached --quiet || git commit -m "Supplier sync $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase -q && git push
+      - name: Wait for the website to update
+        run: sleep 120
+      - name: Post new products to Instagram and Facebook
+        env:
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+        run: |
+          python supplier/autopost.py publish
+          git add data/supplier
+          git diff --cached --quiet || git commit -m "Log social posts"
+          git pull --rebase -q && git push

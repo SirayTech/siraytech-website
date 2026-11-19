@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Finder: the right gaming PC for your games and budget | Siray Tech</title>
+<meta name="description" content="Pick your games, screen and budget. Siray Tech's Build Finder shows the parts you need, what we have in stock and sends you a proper quote, from Centurion, delivered nationwide.">
+<link rel="canonical" href="https://siraytech.co.za/build.html">
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/img/favicon-180.png?v=2">
+<link rel="preload" href="/fonts/rajdhani-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css?v=2">
+<link rel="stylesheet" href="/page.css?v=6">
+<meta property="og:site_name" content="Siray Tech"><meta property="og:title" content="Build Finder | Siray Tech"><meta property="og:description" content="Pick your games, screen and budget and get the right gaming PC quoted."><meta property="og:url" content="https://siraytech.co.za/build.html"><meta property="og:image" content="https://siraytech.co.za/img/white.jpg">
+<style>
+.bf-wrap{max-width:1180px}
+.bf{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start;margin:22px 0 60px}
+@media (max-width:900px){.bf{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:22px}
+.panel h2{font-size:26px;margin:0 0 6px}
+.q{margin:20px 0 0}
+.q>b{display:block;font-family:var(--display);font-size:15px;letter-spacing:.18em;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:500 14px var(--body);color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.chips button[aria-pressed="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.budget{display:flex;align-items:center;gap:14px}
+.budget input[type=range]{flex:1;accent-color:#fff}
+.budget output{font:700 34px var(--display);min-width:130px;text-align:right;font-variant-numeric:tabular-nums}
+.res{position:sticky;top:84px}
+@media (max-width:900px){.res{position:static}}
+.tier{font:700 13px var(--display);letter-spacing:.2em;color:var(--muted)}
+.res h2{font-size:34px;margin:6px 0 4px}
+.res .lead{color:var(--muted);margin:0 0 14px}
+.specs{list-style:none;padding:0;margin:0 0 16px;border-top:1px solid var(--line)}
+.specs li{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.specs li span{color:var(--muted)}
+.fps{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:0 0 16px}
+.fps div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--muted)}
+.fps b{display:block;color:var(--ink);font:700 20px var(--display)}
+.match{display:grid;gap:10px;margin:8px 0 16px}
+.match a{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:8px;text-decoration:none;background:#0b0b0b}
+.match img{width:64px;height:64px;object-fit:contain;background:#fff;border-radius:8px}
+.match b{font:700 22px var(--display)}
+.match small{color:var(--muted);display:block}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.fine{color:var(--muted);font-size:13px;margin-top:14px}
+.hero-s{padding:34px 0 0}
+.hero-s h1{font-size:clamp(34px,5vw,54px)}
+.hero-s p{color:var(--muted);max-width:62ch}
+.bar nav a.on{color:var(--ink)}
+</style>
+</head>
+<body>
+<header><div class="wrap bar"><a class="brand" href="/" aria-label="Siray Tech home"><img src="/img/logo.png" alt="Siray Tech logo"><span>Siray Tech</span></a>
+<nav aria-label="Main"><a href="/#shop">Shop</a><a href="/new.html">Brand new</a><a class="on" href="/build.html">Build Finder</a><a href="/#sell">Sell to us</a><a href="/#contact">Contact</a></nav>
+<a class="btn" href="https://wa.me/27736786392" target="_blank" rel="noopener">WhatsApp us</a></div></header>
+<main>
+<div class="wrap bf-wrap">
+  <section class="hero-s">
+    <p class="crumb"><a href="/">Home</a> › Build Finder</p>
+    <h1>Tell us what you play. We'll tell you what to build.</h1>
+    <p>Pick your games, your screen and your budget. You'll see the parts that make sense, what we have ready in stock, and you can send it to us for a proper Siray Tech quote in one tap. Prefer to chat? Our assistant answers 24/7 (bottom right).</p>
+  </section>
+  <div class="bf">
+    <div class="panel" id="form">
+      <h2>Your setup</h2>
+      <div class="q"><b>WHAT WILL YOU PLAY OR DO?</b><div class="chips" id="games"></div></div>
+      <div class="q"><b>YOUR SCREEN</b><div class="chips" id="screen"></div></div>
+      <div class="q"><b>ANYTHING ELSE?</b><div class="chips" id="extra"></div></div>
+      <div class="q"><b>BUDGET FOR THE PC</b>
+        <div class="budget"><input type="range" id="budget" min="7000" max="80000" step="500" value="20000" aria-label="Budget in rand"><output id="bOut">R20,000</output></div>
+      </div>
+      <div class="q"><b>NEW OR PRE-OWNED?</b><div class="chips" id="cond"></div></div>
+    </div>
+    <div class="panel res" id="res" aria-live="polite"></div>
+  </div>
+</div>
+</main>
+<footer><div class="wrap"><span>© 2026 Siray Tech · BUILD • PERFORM • ELEVATE · Laudium, Centurion</span>
+<span><a href="/terms.html">Terms</a> · <a href="/returns.html">Returns &amp; warranty</a> · <a href="/delivery.html">Delivery</a> · <a href="/privacy.html">Privacy</a></span></div></footer>
+<script src="/catalog.js?v=20261118c"></script>
+<script>
+(function(){
+const R=n=>"R"+Math.round(n).toLocaleString("en-ZA").replace(/[\s ]/g,",");
+const GAMES=[["esports","Valorant / CS2 / Fortnite"],["gta","GTA V / Warzone / Apex"],["aaa","New AAA games (Cyberpunk, Black Ops 7)"],["sim","Flight / racing sims"],["stream","Streaming"],["edit","Video editing / 3D"],["ai","Local AI (image + chat models)"],["work","Office / school"]];
+const SCREENS=[["1080","1080p"],["1440","1440p"],["4k","4K"],["ultra","Ultrawide"]];
+const EXTRA=[["quiet","Quiet"],["white","All-white build"],["rgb","RGB"],["small","Small case"],["wifi","WiFi built in"]];
+const COND=[["any","Either"],["new","Brand new"],["used","Pre-owned (save more)"]];
+const st={games:new Set(["esports"]),screen:"1080",extra:new Set(),budget:20000,cond:"any"};
+/* Typical South African build tiers (Nov 2026). Guidance only: exact parts and price are confirmed in the quote. */
+const TIERS=[
+ {max:10000,name:"Entry esports",gpu:"GTX 1660 Ti / RX 6600 class (pre-owned)",cpu:"6-core (Ryzen 5 5600 / Intel i5-12400 or a used i7)",ram:"16GB DDR4",ssd:"500GB NVMe",psu:"500 to 550W",fps:{esports:"200+ fps 1080p",gta:"60 to 90 fps 1080p high",aaa:"40 to 60 fps 1080p low/medium"},res:"1080"},
+ {max:17000,name:"1080p high",gpu:"RTX 5060 / RX 9060 XT 8GB class",cpu:"Ryzen 5 7600 / Intel i5-14400F",ram:"16GB DDR5",ssd:"1TB NVMe",psu:"650W 80+ Bronze",fps:{esports:"300+ fps 1080p",gta:"100+ fps 1080p high",aaa:"60 to 80 fps 1080p high"},res:"1080"},
+ {max:28000,name:"1440p sweet spot",gpu:"RTX 5060 Ti 16GB / RTX 5070 / RX 9070 class",cpu:"Ryzen 5 9600X / Ryzen 7 7700 / Intel Core Ultra 5",ram:"32GB DDR5",ssd:"1TB Gen4 NVMe",psu:"750W 80+ Gold",fps:{esports:"300+ fps 1440p",gta:"120+ fps 1440p high",aaa:"70 to 100 fps 1440p high"},res:"1440"},
+ {max:45000,name:"1440p max / 4K ready",gpu:"RTX 5070 Ti / RX 9070 XT class",cpu:"Ryzen 7 9800X3D / Intel Core Ultra 7",ram:"32GB DDR5 6000",ssd:"2TB Gen4 NVMe",psu:"850W 80+ Gold",fps:{esports:"400+ fps 1440p",gta:"144+ fps 1440p max",aaa:"60+ fps 4K, 100+ at 1440p"},res:"4k"},
+ {max:1e9,name:"4K and AI flagship",gpu:"RTX 5080 / RTX 5090 class",cpu:"Ryzen 7 9800X3D / Ryzen 9 9950X3D",ram:"32 to 64GB DDR5",ssd:"2 to 4TB Gen4/Gen5 NVMe",psu:"1000W 80+ Gold/Platinum",fps:{esports:"500+ fps",gta:"4K max, 120+ fps",aaa:"4K max with DLSS, 90+ fps"},res:"4k"}];
+const LABEL={esports:"Esports",gta:"GTA V class",aaa:"New AAA"};
+function chips(id,list,isMulti,key){const el=document.getElementById(id);el.innerHTML=list.map(([v,t])=>`<button type="button" data-v="${v}" aria-pressed="false">${t}</button>`).join("");
+ el.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const v=b.dataset.v;if(isMulti){st[key].has(v)?st[key].delete(v):st[key].add(v);if(key==="games"&&!st.games.size)st.games.add(v)}else st[key]=v;sync();render()});}
+chips("games",GAMES,true,"games");chips("screen",SCREENS,false,"screen");chips("extra",EXTRA,true,"extra");chips("cond",COND,false,"cond");
+function sync(){document.querySelectorAll("#games button").forEach(b=>b.setAttribute("aria-pressed",st.games.has(b.dataset.v)));
+ document.querySelectorAll("#extra button").forEach(b=>b.setAttribute("aria-pressed",st.extra.has(b.dataset.v)));
+ document.querySelectorAll("#screen button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===st.screen));
+ document.querySelectorAll("#cond button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===st.cond));}
+const bIn=document.getElementById("budget"),bOut=document.getElementById("bOut");
+bIn.addEventListener("input",()=>{st.budget=+bIn.value;bOut.textContent=R(st.budget);render()});
+function need(){/* minimum sensible tier for the games + screen */
+ let t=0;if(st.games.has("gta"))t=Math.max(t,1);if(st.games.has("aaa")||st.games.has("sim"))t=Math.max(t,1);if(st.games.has("edit")||st.games.has("stream"))t=Math.max(t,1);if(st.games.has("ai"))t=Math.max(t,2);
+ if(st.screen==="1440"||st.screen==="ultra")t=Math.max(t,(st.games.has("aaa")||st.games.has("sim"))?3:2);if(st.screen==="4k")t=Math.max(t,(st.games.has("aaa")||st.games.has("ai"))?4:3);return t;}
+function render(){
+ const byBudget=TIERS.findIndex(t=>st.budget<=t.max), want=need(), t=TIERS[byBudget], short=want>byBudget;
+ const fps=["esports","gta","aaa"].filter(k=>st.games.has(k)||k==="esports").map(k=>`<div><b>${t.fps[k]}</b>${LABEL[k]}</div>`).join("");
+ const extras=[...st.extra].map(x=>EXTRA.find(e=>e[0]===x)[1]).join(", ");
+ const items=(window.CATALOG?window.CATALOG.items:[]).filter(i=>i.st==="stock"&&["gaming-pcs","workstations"].includes(i.sub)&&i.p<=st.budget*1.1).sort((a,b)=>b.p-a.p).slice(0,3);
+ const games=[...st.games].map(g=>GAMES.find(x=>x[0]===g)[1]).join(", "), screen=SCREENS.find(s=>s[0]===st.screen)[1], cond=COND.find(c=>c[0]===st.cond)[1];
+ const msg=`Hi Siray Tech, I used your Build Finder.\n\nGames/use: ${games}\nScreen: ${screen}\nBudget: ${R(st.budget)}\nNew or pre-owned: ${cond}${extras?`\nExtras: ${extras}`:""}\n\nSuggested: ${t.name} (${t.gpu}, ${t.cpu}, ${t.ram}, ${t.ssd}).\nPlease send me a quote.`;
+ document.getElementById("res").innerHTML=`
+  <div class="tier">YOUR BUILD · ${R(st.budget)}</div>
+  <h2>${t.name}</h2>
+  <p class="lead">${short?`For ${screen} with those games we'd suggest a bit more budget (around ${R(TIERS[want-1]?TIERS[want-1].max+1000:TIERS[0].max)}+). Here's the best fit for ${R(st.budget)}:`:"This is the balanced pick for your games, screen and budget."}</p>
+  <ul class="specs">
+   <li><span>Graphics</span>${t.gpu}</li><li><span>Processor</span>${t.cpu}</li><li><span>Memory</span>${t.ram}</li><li><span>Storage</span>${t.ssd}</li><li><span>Power</span>${t.psu}</li>${extras?`<li><span>Extras</span>${extras}</li>`:""}
+  </ul>
+  <div class="fps">${fps}</div>
+  ${items.length&&st.cond!=="new"?`<div class="tier">READY IN STOCK NOW</div><div class="match">${items.map(i=>`<a href="${i.u}"><img src="/img/${i.img}" alt="" loading="lazy"><span>${i.t}<small>Tested, pre-owned · collect or courier</small></span><b>${R(i.p)}</b></a>`).join("")}</div>`:""}
+  <div class="cta"><a class="btn" href="https://wa.me/27736786392?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Get this quoted on WhatsApp</a><a class="btn ghost" href="mailto:siraytech@gmail.com?subject=${encodeURIComponent("Build Finder quote: "+R(st.budget))}&body=${encodeURIComponent(msg)}">Email instead</a></div>
+  <p class="fine">Frame rates are typical for these parts at high settings and will vary by game and settings. Exact parts, price and build time are confirmed on your Siray Tech quote. Custom builds take 3 to 4 business days; pre-owned PCs in stock are ready now.</p>`;
+}
+sync();render();
+})();
+</script>
+<link rel="stylesheet" href="https://storage.googleapis.com/mychatbot-widget-assets/v1/style.css" />
+<script src="https://storage.googleapis.com/mychatbot-widget-assets/v1/widget.js"></script>
+<div id="my-chat-widget-container"></div>
+<script>
+  MyChatBot.mount('#my-chat-widget-container', {account_id: "72827beb-0630-4336-8494-fdfacacc0afe", widget_id: "siraytech-site", api_url: 'https://api.mychatbot.app', assistant_name: "Siray Tech Assistant", color: "#111111", lang: 'en', ad_widget_title: '', ad_widget_description: '', ad_popup_messages: []});
+</script>
+</body>
+</html>

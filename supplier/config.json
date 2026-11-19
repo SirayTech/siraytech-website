@@ -1,0 +1,25 @@
+{
+  "supplier": "evetech",
+  "_note": "Turned off until Evetech agrees in writing. Switch on by setting the repo variable SUPPLIER_SYNC_ENABLED=true (GitHub > Settings > Secrets and variables > Actions > Variables).",
+  "sitemap": "https://www.evetech.co.za/api/sitemap",
+  "product_url_patterns": ["/best-deal/", "/best-pc-deal/", "/laptops-for-sale/"],
+  "crawl_delay_seconds": 1.1,
+  "max_runtime_minutes": 150,
+  "user_agent": "SirayTechSync/1.0 (+https://siraytech.co.za; siraytech@gmail.com)",
+  "pricing": {
+    "mode": "match",
+    "_modes": "match = sell at the supplier's exact price; markup = supplier price x (1 + markup_pct/100), rounded up to round_to",
+    "markup_pct": 0,
+    "round_to": 1
+  },
+  "show_out_of_stock": false,
+  "autopost": {
+    "enabled": false,
+    "max_posts_per_run": 2,
+    "max_posts_per_day": 6,
+    "quiet_hours_sast": [20, 8],
+    "min_price": 1500,
+    "priority_subs": ["gaming-pcs", "laptops", "gpus", "monitors", "cpus", "ssds"],
+    "channels": ["instagram", "facebook"]
+  }
+}

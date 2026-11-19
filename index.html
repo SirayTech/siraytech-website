@@ -45,7 +45,10 @@ nav a:hover{color:var(--ink)}
 .btn:hover{box-shadow:0 0 18px var(--glow)}
 .brand{flex-shrink:0}nav a,nav .mega button{white-space:nowrap}
 @media (max-width:1100px){nav{gap:14px;font-size:13px}}
-@media (max-width:980px){nav a[href="#buy"],nav a[data-go="sold"]{display:none}}
+.bar .btn{white-space:nowrap;flex-shrink:0}
+@media (max-width:1400px){nav a[href="#buy"],nav a[href="#builds"]{display:none}}
+@media (max-width:1180px){nav a[href="#sell"],nav a[data-go="sold"]{display:none}}
+@media (max-width:980px){nav a[href="#contact"],nav a[data-go="stock"]{display:none}}
 @media (max-width:880px){nav a[href="#builds"]{display:none}}
 @media (max-width:760px){nav{display:none}.bar .btn{margin-left:auto}}
 
@@ -185,6 +188,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 .gdots i.on{background:#000}
 .gcount{position:absolute;bottom:8px;left:10px;z-index:3;background:rgba(0,0,0,.72);color:#fff;border-radius:999px;padding:3px 8px;font:500 11px var(--body);font-variant-numeric:tabular-nums}
 .cond{position:absolute;top:14px;right:14px;z-index:3;background:rgba(8,8,8,.78);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:7px 12px;font:600 11px var(--body);letter-spacing:.16em}
+.paths{padding:22px 0;border-bottom:1px solid var(--line)}
+.pathgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pathgrid a{display:flex;flex-direction:column;gap:4px;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--panel)}
+.pathgrid a:hover{border-color:var(--ink);box-shadow:0 0 18px rgba(255,255,255,.12)}
+.pathgrid b{font:700 22px var(--display)}.pathgrid span{color:var(--muted);font-size:14px}
+@media (max-width:860px){.pathgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.pathgrid{grid-template-columns:1fr}}
 </style>
 <link rel="canonical" href="https://siraytech.co.za/">
 <meta name="robots" content="index, follow">
@@ -208,7 +218,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top" aria-label="Siray Tech home"><img src="img/logo.png" alt="Siray Tech logo"><span>Siray Tech</span></a>
-    <nav aria-label="Main"><div class="mega" id="mega"><button type="button" aria-expanded="false" aria-controls="megaPanel">Shop by category ▾</button><div class="panel" id="megaPanel"></div></div><a href="#shop" data-go="stock">In stock</a><a href="#shop" data-go="sold">Sold archive</a><a href="#sell">Sell to us</a><a href="#builds">Custom builds</a><a href="#buy">How to buy</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Main"><div class="mega" id="mega"><button type="button" aria-expanded="false" aria-controls="megaPanel">Shop by category ▾</button><div class="panel" id="megaPanel"></div></div><a href="#shop" data-go="stock">In stock</a><a href="/new.html">Brand new</a><a href="/build.html">Build Finder</a><a href="#shop" data-go="sold">Sold archive</a><a href="#sell">Sell to us</a><a href="#builds">Custom builds</a><a href="#buy">How to buy</a><a href="#contact">Contact</a></nav>
     <a class="btn" href="https://wa.me/27736786392?text=Hi%20Siray%20Tech%2C%20I%27m%20looking%20for%20" target="_blank" rel="noopener">WhatsApp us</a>
   </div>
 </header>
@@ -223,7 +233,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <p>Siray Tech sells gaming PCs, graphics cards, monitors, storage and peripherals. Every item is cleaned, tested and shown working before you pay. Collect in Centurion by appointment or get it couriered anywhere in South Africa.</p>
       <div class="cta">
         <a class="btn" href="#shop">See what's in stock</a>
-        <a class="btn ghost" href="https://wa.me/27736786392?text=Hi%20Siray%20Tech%2C%20I%27d%20like%20a%20custom%20build%20quote.%20Budget%3A%20R%20%20%20Games%2Fuse%3A%20" target="_blank" rel="noopener">Get a custom build quote</a>
+        <a class="btn ghost" href="/build.html">Find my build in 30 seconds</a>
       </div>
     </div>
     <div class="facts" aria-label="Siray Tech at a glance">
@@ -235,6 +245,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   </div>
 </section>
 
+<section class="paths" aria-label="Ways to shop">
+  <div class="wrap pathgrid">
+    <a href="#shop" data-go="stock"><b>Pre-owned, tested</b><span>Ready today. Seen working before you pay.</span></a>
+    <a href="/new.html"><b>Brand new</b><span>Any new PC, laptop or part, quoted in minutes.</span></a>
+    <a href="/build.html"><b>Build Finder</b><span>Pick your games and budget, get the right specs.</span></a>
+    <a href="#sell"><b>Sell or trade in</b><span>Turn your old gear into an upgrade.</span></a>
+  </div>
+</section>
 <section id="shop">
   <div class="wrap">
     <div class="head">
