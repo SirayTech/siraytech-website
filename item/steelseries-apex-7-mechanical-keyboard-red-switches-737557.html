@@ -75,4 +75,5 @@ const i=()=>Math.round(g.scrollLeft/g.clientWidth),to=k=>g.scrollTo({left:Math.m
 if(!p||!x)return;p.onclick=()=>to(i()-1);x.onclick=()=>to(i()+1);t.forEach((b,k)=>b.onclick=()=>to(k));
 g.addEventListener("scroll",()=>{const k=i();c.textContent=(k+1)+" / "+n;p.disabled=k===0;x.disabled=k===n-1;t.forEach((b,j)=>b.setAttribute("aria-current",j===k))},{passive:true});})();
 </script>
+<script src="/search.js?v=20261126a" defer></script>
 </body></html>

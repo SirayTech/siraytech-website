@@ -94,8 +94,10 @@
 
   function render() {
     refreshCounts();
-    const q = state.q.trim().toLowerCase();
-    let list = items.filter(i => inStatus(i) && (!state.top || i.top === state.top) && (!state.sub || i.sub === state.sub) && (!q || i.t.toLowerCase().includes(q)));
+    const toks = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const hay = i => i._h || (i._h = [i.t, i.brand, subName[i.sub], (i.s || []).join(" "), i.n].filter(Boolean).join(" ").toLowerCase());
+    const hit = i => toks.every(t => hay(i).includes(t) || (t.replace(/[^a-z0-9]/g, "") && hay(i).replace(/[^a-z0-9]/g, "").includes(t.replace(/[^a-z0-9]/g, ""))));
+    let list = items.filter(i => inStatus(i) && (!state.top || i.top === state.top) && (!state.sub || i.sub === state.sub) && (!toks.length || hit(i)));
     if (state.sort === "low") list.sort((a, b) => a.p - b.p);
     else if (state.sort === "high") list.sort((a, b) => b.p - a.p);
     else list.sort((a, b) => b.d - a.d);
